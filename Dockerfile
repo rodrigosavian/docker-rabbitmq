@@ -17,7 +17,6 @@ RUN apt-get update
 RUN apt-get install rabbitmq-server -y
 RUN rabbitmq-server -detached
 RUN rabbitmqctl add_user project project
-RUN rabbitmqctl add_vhost myhost
-RUN rabbitmqctl set_permissions -p myhost project '.*' '.*' '.*'
+RUN rabbitmqctl set_permissions -p / project '.*' '.*' '.*'
 
 EXPOSE 5672
