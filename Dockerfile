@@ -13,6 +13,7 @@ RUN locale-gen en_US en_US.UTF-8
 RUN sed -i '$ a deb http://www.rabbitmq.com/debian/ testing main' /etc/apt/sources.list
 RUN wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
 RUN apt-key add rabbitmq-signing-key-public.asc
+RUN apt-get update
 RUN apt-get install rabbitmq-server
 RUN rabbitmq-server -detached
 RUN rabbitmqctl add_user project mypassword
