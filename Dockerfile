@@ -14,13 +14,13 @@ RUN sed -i '$ a deb http://www.rabbitmq.com/debian/ testing main' /etc/apt/sourc
 RUN wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
 RUN apt-key add rabbitmq-signing-key-public.asc
 RUN apt-get update
-RUN apt-get install rabbitmq-server
+RUN apt-get install rabbitmq-server -y
 RUN rabbitmq-server -detached
 RUN rabbitmqctl add_user project mypassword
 RUN rabbitmqctl add_vhost myhost
 RUN rabbitmqctl set_permissions -p myhost project '.*' '.*' '.*'
 
-RUN apt-get install python-pip
+RUN apt-get install python-pip -y
 RUN pip install celery
 
 RUN adduser --disabled-password --gecos '' project
